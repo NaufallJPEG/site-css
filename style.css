@@ -71,6 +71,7 @@
         min-height: 100svh;
         background: url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
         display: flex;
+        mask-image: linear-gradient(to top, rgba rgb(255, 255, 255), rgba (0.0.0.0));
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -276,12 +277,17 @@
         header {
             height: 160px;
             padding: 0 20px;
+            font-size: 30px;
         }
 
         nav a {
             font-size: 22px;
             padding: 16px 12px;
             margin: 0 8px;
+        }
+
+        .nav-menu {
+            font-size: 35px;
         }
 
         .cart {
@@ -318,11 +324,11 @@
         }
 
         .card {
-            width: 80%;
-            margin-left: 10%;
+            width: 60%;
+            margin-left: 20%;
         }
 
-        .footer {
+        .footer-content {
             width: 100%;
         }
     }
