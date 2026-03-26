@@ -318,6 +318,11 @@
         }
 
         .card {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .footer {
             width: 100%;
         }
     }
