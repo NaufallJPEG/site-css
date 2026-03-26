@@ -1,468 +1,415 @@
-    /* =========================
-    GLOBAL
-    ========================= */
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
+/* =========================
+   GLOBAL
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: "Poppins", sans-serif;
-        background: #fff;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+    overflow-x: hidden;
+}
 
-    /* =========================
-    NAVBAR
-    ========================= */
+/* =========================
+   NAVBAR
+========================= */
+header {
+    height: 90px;
+    font-size: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    color: rgb(0, 0, 0);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1200;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    height: 60px;
+    background: rgba(7, 7, 7, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+    position: relative;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: black;
+    /* color: white; */
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+    color: white;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    min-height: 100svh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 100%),
+        url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    color: white;
+}
+
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(22px, 5vw, 40px);
+}
+
+.hero p {
+    font-size: clamp(14px, 3vw, 18px);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* =========================
+   PRODUCT
+========================= */
+.section-title {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    background: #f9f9f900;
+    overflow: hidden;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 16px;
+    flex-grow: 1;
+}
+
+.btn-card {
+    display: block;
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    margin-top: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-card:hover {
+    background: #222;
+    transform: scale(1.05);
+}
+
+/* =========================
+   CART
+========================= */
+.cart {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 320px;
+    max-width: 90%;
+    height: calc(100% - 70px);
+    background: white;
+    padding: 20px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1100;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid #ddd;
+}
+
+.cart.active {
+    transform: translateX(0);
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item:hover {
+    background: #f1f1f1;
+}
+
+.cart-item span {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cart-item span:hover {
+    transform: scale(1.2);
+}
+
+/* overlay */
+#overlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+#overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================
+   PAYMENT METHODS
+========================= */
+.payment-methods {
+    padding: 20px;
+    background: #f9f9f900;
+    border-radius: 12px;
+    margin: 30px 16px;
+}
+
+.payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.payment-header h2 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.btn-arrow {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-arrow.active {
+    transform: rotate(180deg);
+}
+
+.payment-logos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+}
+
+.payment-logos.show {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.payment-logos img {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: black;
+    color: white;
+    padding: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.content {
+    font-size: 15px;
+    margin-right: 50%;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1280px) {
     header {
-        height: 90px;
-        font-size: 25px;
-        background: rgba(255, 255, 255, 0.95);
-        color: rgb(0, 0, 0);
-        backdrop-filter: blur(8px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        height: 160px;
+        font-size: 30px;
         padding: 0 20px;
-        position: sticky;
-        top: 0;
-        z-index: 1200;
-        transition: all 0.3s ease;
-        align-items: center;
-    }
-
-    header.scrolled {
-        height: 60px;
-        background: rgba(7, 7, 7, 0);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
-        position: relative;
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        margin: 0 10px;
-        font-weight: 600;
-        transition: 0.3s;
-        align-items: center;
         font-size: 20px;
+        padding: 16px 12px;
     }
 
-    nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        width: 0%;
-        height: 2px;
-        background: white;
-        transition: 0.3s;
-    }
-
-    nav a:hover::after {
-        width: 100%;
-    }
-
-    /* =========================
-    HERO
-    ========================= */
-    .hero {
-        min-height: 100svh;
-        background: url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
-        display: flex;
-        mask-image: linear-gradient(to top, rgba rgb(255, 255, 255), rgba (0.0.0.0));
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        padding: 20px;
-        color: white;
-    }
-
-    .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.25);
-        transition: background 0.3s ease;
-    }
-
-    .hero * {
-        position: relative;
-        z-index: 1;
-    }
-
-    .hero h1 {
-        font-size: clamp(22px, 5vw, 40px);
-    }
-
-    .hero p {
-        font-size: clamp(14px, 3vw, 18px);
-    }
-
-    .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        background: black;
-        color: white;
-        border-radius: 20px;
-        font-size: 14px;
-        text-decoration: none;
-    }
-
-    /* =========================
-    PRODUCT
-    ========================= */
-    .section-title {
-        text-align: center;
-        margin: 30px 0;
-    }
-
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        padding: 16px;
-    }
-
-    .card {
-        background: #f9f9f900;
-        /* border-radius: 12px; */
-        overflow: hidden;
-        /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
-        /* display: flex; */
-        flex-direction: row;
-        transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-        transform: scale(1.05);
-    }
-
-    .card img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .card-body {
-        padding: 16px;
-        flex-grow: 1;
-    }
-
-    .btn-card {
-        display: block;
-        background: black;
-        color: white;
-        text-align: center;
-        padding: 14px;
-        margin-top: 12px;
-        /* border-radius: 10px; */
-        font-size: 18px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn-card:hover {
-        background: #222;
-        transform: scale(1.05);
-    }
-
-    /* =========================
-    CART
-    ========================= */
     .cart {
-        position: fixed;
-        top: 70px;
-        right: 0;
-        width: 320px;
-        max-width: 90%;
-        height: calc(100% - 70px);
-        background: white;
-        padding: 20px;
-        overflow-y: auto;
-        transform: translateX(100%);
-        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        z-index: 1100;
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
-        border-left: 1px solid #ddd;
-    }
-
-    .cart.active {
-        transform: translateX(0);
+        top: 160px;
+        width: 75%;
+        height: calc(100% - 160px);
     }
 
     .cart-item {
-        border-bottom: 1px solid #ddd;
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background 0.2s ease;
-    }
-
-    .cart-item:hover {
-        background: #f1f1f1;
+        font-size: 20px;
     }
 
     .cart-item span {
-        cursor: pointer;
-        transition: transform 0.2s ease;
-    }
-
-    .cart-item span:hover {
-        transform: scale(1.2);
-    }
-
-    /* overlay */
-    #overlay {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        height: calc(100% - 70px);
-        background: rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-        z-index: 1000;
-    }
-
-    #overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    /* metd payment */
-    .payment-methods {
-        padding: 20px;
-        background: #f9f9f900;
-        border-radius: 12px;
-        margin: 30px 16px;
-        /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
-    }
-
-    .payment-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-bottom: 16px;
-    }
-
-    .payment-header h2 {
-        font-size: 22px;
-        margin: 0;
-        font-weight: 500;
-    }
-
-    .btn-arrow {
-        background: none;
-        border: none;
         font-size: 24px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
     }
 
-    /* ikon akan berputar saat aktif */
-    .btn-arrow.active {
-        transform: rotate(180deg);
+    .hero h1 {
+        font-size: clamp(32px, 8vw, 52px);
+    }
+
+    .hero p {
+        font-size: clamp(20px, 5vw, 28px);
+    }
+
+    .btn,
+    .btn-card {
+        font-size: 22px;
+        padding: 18px 28px;
+    }
+
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
     }
 
     .payment-logos {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 12px;
-        transition: max-height 0.4s ease, opacity 0.4s ease;
-        overflow: hidden;
-        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 120px;
+        padding: 0 15px;
     }
 
-    .payment-logos img {
-        width: 50%;
-        height: auto;
-        object-fit: contain;
-        padding: 8px;
-        /* background: rgba(255, 255, 255, 0); */
-        border-radius: 8px;
-        /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+    nav a {
+        font-size: 18px;
+        padding: 14px 10px;
+        margin: 0 6px;
     }
 
-    /* Responsif tablet & HP */
-    @media (max-width: 768px) {
-        .payment-logos {
-            grid-template-columns: repeat(3, 1fr);
-        }
+    .cart {
+        top: 120px;
+        width: 80%;
+        height: calc(100% - 120px);
     }
 
-    /* HP kecil */
-    @media (max-width: 480px) {
-        .payment-logos {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .cart-item {
+        font-size: 18px;
     }
 
-    /* matod payment */
-    /* =========================
-    FOOTER
-    ========================= */
-    footer {
-        background: rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
-        padding: 20px;
+    .cart-item span {
+        font-size: 22px;
     }
 
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 15px;
+    .hero h1 {
+        font-size: clamp(28px, 8vw, 48px);
     }
 
-    .content {
-        font-size: 15px;
-        justify-content: left;
-        margin-right: 50%;
+    .hero p {
+        font-size: clamp(18px, 5vw, 24px);
     }
 
-    .copyright {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 14px;
+    .payment-logos {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    /* =========================
-    RESPONSIVE
-    ========================= */
-
-    /* Tablet & HP */
-    /* =========================
-    RESPONSIVE
-    ========================= */
-
-    /* Tablet & HP */
-    /* =========================
-    RESPONSIVE
-    ========================= */
-
-    /* Tablet & HP */
-    @media (max-width: 1280px) {
-        header {
-            height: 160px;
-            padding: 0 20px;
-            font-size: 30px;
-        }
-
-        nav a {
-            font-size: 20px;
-            padding: 16px 12px;
-            margin: 0 8px;
-        }
-
-        .nav-menu {
-            font-size: 35px;
-        }
-
-        .cart {
-            top: 160px;
-            width: 75%;
-            max-width: 320px;
-            height: calc(100% - 160px);
-        }
-
-        .cart-item {
-            font-size: 20px;
-        }
-
-        .cart-item span {
-            font-size: 24px;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 8vw, 52px);
-        }
-
-        .hero p {
-            font-size: clamp(20px, 5vw, 28px);
-        }
-
-        .btn,
-        .btn-card {
-            font-size: 22px;
-            padding: 18px 28px;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            /* 2 kolom */
-            gap: 16px;
-            /* Jarak antar card */
-            padding: 16px;
-        }
-
-        .card {
-            width: 100%;
-            /* Card isi 1 kolom penuh */
-        }
-    }
-
-    .footer-content {
-        width: 100%;
-    }
-
-
-    @media (max-width: 480px) {
-        header {
-            height: 120px;
-            padding: 0 15px;
-        }
-
-        nav a {
-            font-size: 20px;
-            padding: 14px 10px;
-            margin: 0 6px;
-        }
-
-        .cart {
-            top: 120px;
-            width: 80%;
-            max-width: 280px;
-            height: calc(100% - 120px);
-        }
-
-        .cart-item {
-            font-size: 18px;
-        }
-
-        .cart-item span {
-            font-size: 22px;
-        }
-
-        .hero h1 {
-            font-size: clamp(28px, 8vw, 48px);
-        }
-
-        .hero p {
-            font-size: clamp(18px, 5vw, 24px);
-        }
-
-        .btn,
-        .btn-card {
-            font-size: 20px;
-            padding: 16px 24px;
-        }
-
-        .container {
-            grid-template-columns: 1fr;
-        }
-
-        .card {
-            width: 100%;
-        }
-    }
+/* =========================
+   DISABLE ZOOM (mobile)
+========================= */
+/* Tambahkan meta tag di HTML: 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+*/
