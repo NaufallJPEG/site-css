@@ -18,7 +18,7 @@ body {
    NAVBAR
 ========================= */
 header {
-    height: 70px;
+    height: 90px;
     background: rgba(7, 7, 7, 0.95);
     color: white;
     backdrop-filter: blur(8px);
@@ -30,6 +30,7 @@ header {
     top: 0;
     z-index: 1200;
     transition: all 0.3s ease;
+    align-items: center;
 }
 
 header.scrolled {
@@ -45,6 +46,7 @@ nav a {
     margin: 0 10px;
     font-weight: 600;
     transition: 0.3s;
+    align-items: center;
 }
 
 nav a::after {
@@ -265,6 +267,11 @@ footer {
 ========================= */
 
 /* Tablet & HP */
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Tablet & HP */
 @media (max-width: 768px) {
     header {
         height: 80px;
@@ -272,16 +279,16 @@ footer {
     }
 
     nav a {
-        font-size: 18px;
-        padding: 12px;
-        display: inline-block;
-        /* tetap horizontal */
+        font-size: 20px;
+        /* tetap besar */
+        padding: 14px 12px;
+        /* lebih nyaman disentuh */
         margin: 0 8px;
-        /* beri jarak antar link */
     }
 
     .cart-btn {
-        font-size: 22px;
+        font-size: 24px;
+        /* lebih besar */
     }
 
     .hero {
@@ -292,25 +299,26 @@ footer {
         top: 80px;
         height: calc(100% - 80px);
         width: 70%;
-        /* tidak terlalu lebar */
         max-width: 300px;
-        /* batasi maksimal */
     }
 
     .cart-item {
-        font-size: 16px;
-        padding: 12px 0;
+        font-size: 18px;
+        /* tetap besar */
+        padding: 14px 0;
     }
 
     .cart-item span {
-        font-size: 20px;
+        font-size: 22px;
         margin: 0 8px;
     }
 
     .btn,
     .btn-card {
-        font-size: 16px;
-        padding: 12px;
+        font-size: 18px;
+        /* tetap besar */
+        padding: 14px 20px;
+        /* lebih klik-friendly */
     }
 }
 
@@ -322,10 +330,9 @@ footer {
     }
 
     nav a {
-        font-size: 16px;
-        padding: 10px;
-        display: inline-block;
-        /* tetap horizontal */
+        font-size: 18px;
+        /* jangan kecil */
+        padding: 12px;
         margin: 0 5px;
     }
 
@@ -333,11 +340,18 @@ footer {
         top: 85px;
         height: calc(100% - 85px);
         width: 80%;
-        /* lebih nyaman, tidak full layar */
         max-width: 280px;
     }
 
     .cart-item {
-        font-size: 15px;
+        font-size: 16px;
+        /* tetap besar */
+    }
+
+    .btn,
+    .btn-card {
+        font-size: 18px;
+        /* jangan kecil */
+        padding: 14px 20px;
     }
 }
