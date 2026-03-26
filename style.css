@@ -19,8 +19,8 @@
     ========================= */
     header {
         height: 90px;
-        background: rgba(7, 7, 7, 0.95);
-        color: white;
+        background: rgba(255, 255, 255, 0.95);
+        color: rgb(0, 0, 0);
         backdrop-filter: blur(8px);
         display: flex;
         justify-content: space-between;
@@ -41,7 +41,7 @@
 
     nav a {
         position: relative;
-        color: white;
+        color: rgb(0, 0, 0);
         text-decoration: none;
         margin: 0 10px;
         font-weight: 600;
@@ -132,8 +132,8 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
+        /* display: flex; */
+        flex-direction: row;
         transition: transform 0.2s ease;
     }
 
@@ -320,18 +320,24 @@
         }
 
         .container {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 2 kolom */
+            gap: 16px;
+            /* Jarak antar card */
+            padding: 16px;
         }
 
         .card {
-            width: 60%;
-            margin-left: 20%;
-        }
-
-        .footer-content {
             width: 100%;
+            /* Card isi 1 kolom penuh */
         }
     }
+
+    .footer-content {
+        width: 100%;
+    }
+
 
     @media (max-width: 480px) {
         header {
