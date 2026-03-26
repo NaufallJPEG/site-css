@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Treassure|Shop</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <h2>Treassure.ID</h2>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <nav id="nav-menu">
+            <a href="#home" class="active">Home</a>
+            <a href="#product" class="active">Product</a>
+            <a href="#footer" class="active">Contact</a>
+        </nav>
+
+        <div class="cart-btn" onclick="toggleCart()">
+            🛒 <span id="count">0</span>
+        </div>
+    </header>
+
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <!-- <h1>Find Your Treassure</h1> -->
+            <!-- <p>Simple. Clean. Premium Quality.</p> -->
+            <!-- <a href="#product" class="btn">Shop Now</a> -->
+        </div>
+    </section>
+
+    <!-- PRODUCT -->
+    <section id="product">
+        <h2 class="section-title">Our Products</h2>
+        <div class="container" id="product-list"></div>
+    </section>
+
+    <!-- CART -->
+    <div class="cart" id="cart">
+        <h3>Keranjang</h3>
+        <div id="cart-items"></div>
+        <div id="empty" class="empty">Keranjang kosong</div>
+
+        <div class="summary">
+            Total: Rp <span id="total">0</span>
+        </div>
+
+        <h4>Checkout</h4>
+        <input type="text" id="nama" placeholder="Nama">
+        <textarea id="alamat" placeholder="Alamat"></textarea>
+
+        <button class="checkout" onclick="checkoutWA()">Checkout WhatsApp</button>
+        <div id="overlay" onclick="toggleCart()"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div>
+                <h3>TREASSURE</h3>
+                <p>Brand streetwear lokal dengan kualitas premium.#FNDYOURTREASSURE</p>
+            </div>
+
+            <div>
+                <h4>Menu</h4>
+                <p>Home</p>
+                <p>Product</p>
+                <p>Contact</p>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>WhatsApp: 0813-4094-1936</p>
+                <p>Instagram: @treassr.id</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <!-- © 2026 Insomnia Store -->
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
