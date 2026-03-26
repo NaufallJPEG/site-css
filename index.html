@@ -65,12 +65,29 @@
         <div id="overlay" onclick="toggleCart()"></div>
     </div>
 
+    <section class="payment-methods">
+        <div class="payment-header">
+            <h2>Metode Pembayaran</h2>
+            <button id="toggle-payment" class="btn-arrow">
+                &#9660; <!-- panah bawah -->
+            </button>
+        </div>
+        <div class="payment-logos" id="payment-logos">
+            <img src="asset/logo1.png" alt="Logo 1">
+            <img src="asset/logo2.png" alt="Logo 1">
+            <img src="asset/logo03.png" alt="Logo 1">
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer id="footer">
         <div class="footer-content">
             <div>
                 <h3>TREASSURE</h3>
-                <p>Brand streetwear lokal dengan kualitas premium.#FNDYOURTREASSURE</p>
+                <p class="content">Treasure adalah brand streetwear yang lahir dari semangat urban dan budaya lokal.
+                    Berbasis di
+                    Merauke, Papua, Treasure menggabungkan estetika modern streetwear dengan sentuhan kearifan lokal
+                    Papua, </p>
             </div>
 
             <div>
@@ -93,6 +110,29 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('toggle-payment');
+        const logos = document.getElementById('payment-logos');
+
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active'); // putar panah
+
+            if (logos.style.display === 'none' || logos.style.maxHeight === '0px') {
+                logos.style.display = 'grid';
+                logos.style.maxHeight = logos.scrollHeight + "px";
+                logos.style.opacity = 1;
+            } else {
+                logos.style.maxHeight = "0";
+                logos.style.opacity = 0;
+                setTimeout(() => logos.style.display = 'none', 400);
+            }
+        });
+
+        // Default hide
+        logos.style.maxHeight = "0";
+        logos.style.opacity = 0;
+        logos.style.display = "none";
+    </script>
 </body>
 
 </html>

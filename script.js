@@ -5,12 +5,6 @@ const products = [
     { id: 4, name: "Tshirt Boxy 20s (004)", price: 200000, img: "asset/004.png" },
     { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
     { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
-    { id: 5, name: "Tshirt Boxy 20s (005)", price: 200000, img: "asset/005.png" },
 ];
 
 /* =========================
@@ -134,6 +128,8 @@ function toggleCart() {
     document.getElementById("cart").classList.toggle("active");
     document.getElementById("overlay").classList.toggle("active");
 }
+//payment/
+
 
 /* klik overlay = tutup */
 document.getElementById("overlay").addEventListener("click", closeCart);
