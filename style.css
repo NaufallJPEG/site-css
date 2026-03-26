@@ -30,7 +30,7 @@
         top: 0;
         z-index: 1200;
         transition: all 0.3s ease;
-        align-items: ;
+        align-items: center;
     }
 
     header.scrolled {
@@ -272,7 +272,7 @@
     ========================= */
 
     /* Tablet & HP */
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
         header {
             height: 160px;
             padding: 0 20px;
