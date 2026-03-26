@@ -48,7 +48,7 @@
         font-weight: 600;
         transition: 0.3s;
         align-items: center;
-        font-size: 25px;
+        font-size: 20px;
     }
 
     nav a::after {
@@ -359,7 +359,7 @@
         }
 
         nav a {
-            font-size: 42px;
+            font-size: 20px;
             padding: 16px 12px;
             margin: 0 8px;
         }
