@@ -1,51 +1,93 @@
+/* =========================
+   GLOBAL
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
+    background: #fff;
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 header {
     height: 70px;
-    background: #070707;
+    background: rgba(7, 7, 7, 0.95);
     color: white;
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
     align-items: center;
+    padding: 0 20px;
     position: sticky;
     top: 0;
     z-index: 1200;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    height: 60px;
+    background: rgba(7, 7, 7, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 nav a {
+    position: relative;
     color: white;
-    margin: 0 10px;
     text-decoration: none;
+    margin: 0 10px;
     font-weight: 600;
-    font-size: 18px;
-}
-
-.active:hover {
-    color: #7a7a7a;
     transition: 0.3s;
 }
 
-/* HERO */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   HERO
+========================= */
 .hero {
-    min-height: 100vh;
-    /* fallback */
     min-height: 100svh;
-    /* fix mobile modern */
-
     background: url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding: 20px;
     text-align: center;
+    position: relative;
+    padding: 20px;
     color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    transition: background 0.3s ease;
+}
+
+.hero * {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -64,9 +106,12 @@ nav a {
     color: white;
     border-radius: 20px;
     font-size: 14px;
+    text-decoration: none;
 }
 
-/* PRODUCT */
+/* =========================
+   PRODUCT
+========================= */
 .section-title {
     text-align: center;
     margin: 30px 0;
@@ -86,6 +131,11 @@ nav a {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
 
 .card img {
@@ -108,27 +158,34 @@ nav a {
     margin-top: 10px;
     border-radius: 8px;
     font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* CART */
+.btn-card:hover {
+    background: #222;
+    transform: scale(1.05);
+}
+
+/* =========================
+   CART
+========================= */
 .cart {
     position: fixed;
     top: 70px;
-    /* biar tidak nutup navbar */
     right: 0;
-
     width: 320px;
     max-width: 90%;
     height: calc(100% - 70px);
-
     background: white;
     padding: 20px;
     overflow-y: auto;
-
     transform: translateX(100%);
-    transition: transform 0.3s ease;
-
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 1100;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid #ddd;
 }
 
 .cart.active {
@@ -138,34 +195,47 @@ nav a {
 .cart-item {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
 }
 
-.empty {
-    text-align: center;
-    color: gray;
+.cart-item:hover {
+    background: #f1f1f1;
 }
 
-/* OVERLAY */
+.cart-item span {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cart-item span:hover {
+    transform: scale(1.2);
+}
+
+/* overlay */
 #overlay {
     position: fixed;
     top: 70px;
-    /* ikut bawah navbar */
     left: 0;
     width: 100%;
     height: calc(100% - 70px);
-
     background: rgba(0, 0, 0, 0.3);
-    display: none;
-
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 1000;
 }
 
 #overlay.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer {
     background: black;
     color: white;
@@ -179,10 +249,6 @@ footer {
     gap: 15px;
 }
 
-.footer-content div {
-    cursor: pointer;
-}
-
 .copyright {
     text-align: center;
     margin-top: 20px;
@@ -193,36 +259,42 @@ footer {
    RESPONSIVE
 ========================= */
 
-/* Tablet */
-/* HP */
-@media (max-width: 768px) {
+/* Tablet & HP */
+/* =========================
+   RESPONSIVE
+========================= */
 
-    /* NAVBAR */
+/* Tablet & HP */
+@media (max-width: 768px) {
     header {
         height: 80px;
-        /* lebih tinggi */
         padding: 0 15px;
     }
 
     nav a {
         font-size: 18px;
         padding: 12px;
-        /* area klik lebih besar */
+        display: inline-block;
+        /* tetap horizontal */
+        margin: 0 8px;
+        /* beri jarak antar link */
     }
 
     .cart-btn {
         font-size: 22px;
-        /* icon lebih besar */
     }
 
-    /* SIDEBAR CART */
+    .hero {
+        min-height: 70svh;
+    }
+
     .cart {
         top: 80px;
-        /* sesuaikan navbar */
         height: calc(100% - 80px);
-        width: 85%;
-        /* lebih lebar */
-        padding: 20px;
+        width: 70%;
+        /* tidak terlalu lebar */
+        max-width: 300px;
+        /* batasi maksimal */
     }
 
     .cart-item {
@@ -232,12 +304,9 @@ footer {
 
     .cart-item span {
         font-size: 20px;
-        /* tombol + - lebih besar */
         margin: 0 8px;
-        cursor: pointer;
     }
 
-    /* BUTTON */
     .btn,
     .btn-card {
         font-size: 16px;
@@ -247,20 +316,25 @@ footer {
 
 /* HP kecil */
 @media (max-width: 480px) {
-
     header {
         height: 85px;
+        padding: 0 10px;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 10px;
+        display: inline-block;
+        /* tetap horizontal */
+        margin: 0 5px;
     }
 
     .cart {
         top: 85px;
         height: calc(100% - 85px);
-        width: 100%;
-        /* full layar biar nyaman */
-    }
-
-    nav a {
-        font-size: 16px;
+        width: 80%;
+        /* lebih nyaman, tidak full layar */
+        max-width: 280px;
     }
 
     .cart-item {
