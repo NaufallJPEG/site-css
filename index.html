@@ -80,6 +80,20 @@
         </div>
     </section>
 
+    <section class="Metode-pengiriman">
+        <div class="pengiriman-header">
+            <h2>Metode pengiriman</h2>
+            <button id="toggle-paymet" class="btn-arow">
+                &#9660; <!-- panah bawah -->
+            </button>
+        </div>
+        <div class="payment-logos" id="payment-logos">
+            <img src="asset/logo1.png" alt="Logo 1">
+            <img src="asset/logo2.png" alt="Logo 1">
+            <img src="asset/logo03.png" alt="Logo 1">
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer id="footer">
         <div class="footer-content">
@@ -113,6 +127,29 @@
     <script src="script.js"></script>
     <script>
         const toggleBtn = document.getElementById('toggle-payment');
+        const logos = document.getElementById('payment-logos');
+
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active'); // putar panah
+
+            if (logos.style.display === 'none' || logos.style.maxHeight === '0px') {
+                logos.style.display = 'grid';
+                logos.style.maxHeight = logos.scrollHeight + "px";
+                logos.style.opacity = 1;
+            } else {
+                logos.style.maxHeight = "0";
+                logos.style.opacity = 0;
+                setTimeout(() => logos.style.display = 'none', 400);
+            }
+        });
+
+        // Default hide
+        logos.style.maxHeight = "0";
+        logos.style.opacity = 0;
+        logos.style.display = "none";
+    </script>
+    <script>
+        const toggleBtn = document.getElementById('toggle-paymet');
         const logos = document.getElementById('payment-logos');
 
         toggleBtn.addEventListener('click', () => {

@@ -12,7 +12,9 @@ body {
     font-family: "Poppins", sans-serif;
     background: #fff;
     overflow-x: hidden;
-    font-size: 25px;
+    font-size: 20px;
+    /* teks utama normal */
+    line-height: 1.5;
 }
 
 /* =========================
@@ -20,9 +22,8 @@ body {
 ========================= */
 header {
     height: 90px;
-    font-size: 25px;
     background: rgba(255, 255, 255, 0.95);
-    color: rgb(0, 0, 0);
+    color: #000;
     backdrop-filter: blur(8px);
     display: flex;
     justify-content: space-between;
@@ -42,24 +43,24 @@ header.scrolled {
 
 nav a {
     position: relative;
-    color: rgb(0, 0, 0);
+    color: #000000;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 12px;
     font-weight: 600;
-    transition: 0.3s;
     font-size: 20px;
+    transition: 0.3s;
 }
 
 nav a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -4px;
     width: 0%;
     height: 2px;
     background: black;
-    /* color: white; */
     transition: 0.3s;
+    color: white;
 }
 
 nav a:hover::after {
@@ -71,9 +72,9 @@ nav a:hover::after {
    HERO
 ========================= */
 .hero {
-    min-height: 100svh;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.6) 100%),
-        url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(46, 46, 46, 0.993) 100%),
+        url("asset/Slide\ 16_9\ -\ 1.png") center center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,21 +90,23 @@ nav a:hover::after {
 }
 
 .hero h1 {
-    font-size: clamp(22px, 5vw, 40px);
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: 12px;
 }
 
 .hero p {
-    font-size: clamp(14px, 3vw, 18px);
+    font-size: clamp(16px, 3.5vw, 20px);
+    margin-bottom: 20px;
 }
 
 .btn {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background: black;
     color: white;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
 }
 
@@ -113,6 +116,7 @@ nav a:hover::after {
 .section-title {
     text-align: center;
     margin: 30px 0;
+    font-size: 24px;
 }
 
 .container {
@@ -130,7 +134,7 @@ nav a:hover::after {
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .card img {
@@ -142,6 +146,7 @@ nav a:hover::after {
 .card-body {
     padding: 16px;
     flex-grow: 1;
+    font-size: 16px;
 }
 
 .btn-card {
@@ -149,9 +154,9 @@ nav a:hover::after {
     background: black;
     color: white;
     text-align: center;
-    padding: 14px;
+    padding: 12px;
     margin-top: 12px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     text-decoration: none;
     transition: background 0.3s ease, transform 0.2s ease;
@@ -159,7 +164,7 @@ nav a:hover::after {
 
 .btn-card:hover {
     background: #222;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* =========================
@@ -192,14 +197,12 @@ nav a:hover::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.cart-item:hover {
-    background: #f1f1f1;
+    font-size: 16px;
 }
 
 .cart-item span {
     cursor: pointer;
+    font-size: 18px;
     transition: transform 0.2s ease;
 }
 
@@ -236,6 +239,26 @@ nav a:hover::after {
     margin: 30px 16px;
 }
 
+.Metode-pengiriman {
+    padding: 20px;
+    background: #f9f9f900;
+    border-radius: 12px;
+    margin: 30px 16px;
+}
+
+.pengiriman-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.pengiriman-header h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
 .payment-header {
     display: flex;
     justify-content: space-between;
@@ -244,20 +267,32 @@ nav a:hover::after {
 }
 
 .payment-header h2 {
-    font-size: 22px;
-    margin: 0;
+    font-size: 20px;
     font-weight: 500;
+    margin: 0;
 }
 
 .btn-arrow {
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .btn-arrow.active {
+    transform: rotate(180deg);
+}
+
+.btn-arow {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-arow.active {
     transform: rotate(180deg);
 }
 
@@ -269,19 +304,22 @@ nav a:hover::after {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
+    align-items: center;
 }
 
 .payment-logos.show {
-    max-height: 500px;
+    max-height: 400px;
     opacity: 1;
 }
 
 .payment-logos img {
-    width: 50%;
+    width: 60%;
     height: auto;
     object-fit: contain;
     padding: 8px;
     border-radius: 8px;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 /* =========================
@@ -291,6 +329,7 @@ footer {
     background: black;
     color: white;
     padding: 20px;
+    font-size: 16px;
 }
 
 .footer-content {
@@ -301,8 +340,8 @@ footer {
 }
 
 .content {
-    font-size: 15px;
-    margin-right: 50%;
+    font-size: 16px;
+    margin-right: 0;
 }
 
 .copyright {
@@ -315,47 +354,22 @@ footer {
    RESPONSIVE
 ========================= */
 @media (max-width: 1280px) {
-    header {
-        height: 160px;
-        font-size: 30px;
-        padding: 0 20px;
-    }
-
-    nav a {
-        font-size: 20px;
-        padding: 16px 12px;
-    }
-
-    .cart {
-        top: 160px;
-        width: 75%;
-        height: calc(100% - 160px);
-    }
-
-    .cart-item {
-        font-size: 20px;
-    }
-
-    .cart-item span {
-        font-size: 24px;
+    .container {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .hero h1 {
-        font-size: clamp(32px, 8vw, 52px);
+        font-size: clamp(28px, 6vw, 40px);
     }
 
     .hero p {
-        font-size: clamp(20px, 5vw, 28px);
+        font-size: clamp(16px, 3vw, 20px);
     }
 
     .btn,
     .btn-card {
-        font-size: 22px;
-        padding: 18px 28px;
-    }
-
-    .container {
-        grid-template-columns: repeat(3, 1fr);
+        font-size: 16px;
+        padding: 12px 24px;
     }
 }
 
@@ -370,47 +384,21 @@ footer {
 }
 
 @media (max-width: 480px) {
-    header {
-        height: 120px;
-        padding: 0 15px;
-    }
-
-    nav a {
-        font-size: 18px;
-        padding: 14px 10px;
-        margin: 0 6px;
-    }
-
-    .cart {
-        top: 120px;
-        width: 80%;
-        height: calc(100% - 120px);
-    }
-
-    .cart-item {
-        font-size: 18px;
-    }
-
-    .cart-item span {
-        font-size: 22px;
-    }
-
     .hero h1 {
-        font-size: clamp(28px, 8vw, 48px);
+        font-size: clamp(24px, 6vw, 32px);
     }
 
     .hero p {
-        font-size: clamp(18px, 5vw, 24px);
+        font-size: clamp(14px, 3vw, 18px);
+    }
+
+    .btn,
+    .btn-card {
+        font-size: 14px;
+        padding: 10px 20px;
     }
 
     .payment-logos {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-/* =========================
-   DISABLE ZOOM (mobile)
-========================= */
-/* Tambahkan meta tag di HTML: 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
-*/
