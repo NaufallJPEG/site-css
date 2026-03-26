@@ -5,15 +5,16 @@ body {
 
 /* NAVBAR */
 header {
+    height: 70px;
     background: #070707;
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
+    padding: 0 20px;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1200;
 }
 
 nav a {
@@ -31,11 +32,17 @@ nav a {
 
 /* HERO */
 .hero {
-    min-height: 80vh;
-    background: url("asset/Slide 16_9 - 1.png") center/cover no-repeat;
+    min-height: 100vh;
+    /* fallback */
+    min-height: 100svh;
+    /* fix mobile modern */
+
+    background: url("asset/Slide 16_9 - 1.png") center center / cover no-repeat;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 20px;
     text-align: center;
     color: white;
@@ -106,17 +113,22 @@ nav a {
 /* CART */
 .cart {
     position: fixed;
-    top: 0;
+    top: 70px;
+    /* biar tidak nutup navbar */
     right: 0;
+
     width: 320px;
     max-width: 90%;
-    height: 100%;
+    height: calc(100% - 70px);
+
     background: white;
     padding: 20px;
     overflow-y: auto;
+
     transform: translateX(100%);
-    transition: 0.3s;
-    z-index: 999;
+    transition: transform 0.3s ease;
+
+    z-index: 1100;
 }
 
 .cart.active {
@@ -136,15 +148,22 @@ nav a {
 /* OVERLAY */
 #overlay {
     position: fixed;
-    inset: 0;
+    top: 70px;
+    /* ikut bawah navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+
     background: rgba(0, 0, 0, 0.3);
     display: none;
-    z-index: 998;
+
+    z-index: 1000;
 }
 
 #overlay.active {
     display: block;
 }
+
 
 /* FOOTER */
 footer {
@@ -206,35 +225,36 @@ footer {
     }
 
     .hero {
-        min-height: 50vh;
+        min-height: 70svh;
+        /* tidak terlalu tinggi di HP */
+        padding: 15px;
+
+        .container {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        .cart {
+            width: 80%;
+        }
+
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
     }
 
-    .container {
-        grid-template-columns: 1fr;
-    }
+    /* HP kecil */
+    @media (max-width: 480px) {
+        .cart {
+            width: 100%;
+        }
 
-    .card {
-        width: 100%;
+        .btn {
+            font-size: 12px;
+            padding: 8px 14px;
+        }
     }
-
-    .cart {
-        width: 80%;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* HP kecil */
-@media (max-width: 480px) {
-    .cart {
-        width: 100%;
-    }
-
-    .btn {
-        font-size: 12px;
-        padding: 8px 14px;
-    }
-}
