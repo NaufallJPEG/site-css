@@ -211,17 +211,18 @@ nav a:hover::after {
 }
 
 /* overlay */
-#overlay {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 70px);
-    background: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
+/* #overlay { */
+position: fixed;
+top: 70px;
+left: 0;
+width: 100%;
+height: calc(100% - 70px);
+background: rgba(0, 0, 0, 0.3);
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease,
+visibility 0.3s ease;
+z-index: 1000;
 }
 
 #overlay.active {
@@ -366,6 +367,10 @@ footer {
         font-size: clamp(16px, 3vw, 20px);
     }
 
+    .payment-methods .btn-arrow {
+        width: 110%;
+    }
+
     .btn,
     .btn-card {
         font-size: 16px;
@@ -376,6 +381,10 @@ footer {
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
+    }
+
+    .payment-methods {
+        width: 100%;
     }
 
     .payment-logos {
